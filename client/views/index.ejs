@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Message Board</title>
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1>Node.js & Mongodb Message Board</h1>
+		<hr>
+<% if(typeof(errors) != "undefined") { %>
+	<% for(var x in errors) { %>
+		<p class="text-danger">**<%= errors[x].message %>**</p>
+	<% } %>
+<% } %>
+		<form action="addMessage" method="post" class="form-horizontal">
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">Message</label>
+				<div class="col-sm-10">
+					<textarea name="message" id="message" class="form-control" rows="3" placeholder="What's on your mind?"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</div>
+			</div>
+		</form>
+		<hr>
+
+<% for(message in messages) { %>
+		<p>Name: <%= messages[message].name %></p>
+		<p>Message: <%= messages[message].message %></p>
+		<p><small>Posted on: <%= messages[message].date %></small></p>
+		<hr>
+<% } %>
+
+	</div>
+	<!-- SCRIPTS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>​
+</body>
+</html>
