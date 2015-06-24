@@ -36,9 +36,14 @@
 		<hr>
 
 <% for(message in messages) { %>
-		<p>Name: <%= messages[message].name %></p>
-		<p>Message: <%= messages[message].message %></p>
-		<p><small>Posted on: <%= messages[message].date %></small></p>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<p class="lead"><%= messages[message].message %></p>
+			</div>
+			<div class="panel-footer">
+				<p><small>Posted by <strong><%= messages[message].name %></strong> on <%= messages[message].date %></small></p>
+			</div>
+		</div>
 		<hr>
 <% } %>
 
