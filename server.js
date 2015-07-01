@@ -42,17 +42,12 @@ app.post("/addMessage", function(req, res){
 		name: req.body.name,
 		message: req.body.message
 	});
-	message.save(function(err){
+	message.save(function(err, messages){
 		if(err){
 			console.log("ERR while posting new message");
-			// res.render("index", {title: "You've got errors!", errors: message.errors});
+			res.render("index", {title: "You've got errors!", errors: message.errors, messages: messages});
 		} else {
-			Messages.find({}, function(err, messages){
-				if(err){
-					console.log("ERR when retrieving message", err);
-				}
-				res.redirect("/");
-			});
+			res.redirect("/");
 		}
 	});
 });
